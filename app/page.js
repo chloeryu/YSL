@@ -1,8 +1,11 @@
-import { MogoClient } from "mogodb"
+import { connectDB } from "@/util/databade"
+import { MongoClient } from "mongodb"
 
-export default function Home() {
+export default async function Home() {
 
-  MogoClient.connect()
+  const db = (await connectDB).db("forum")
+  let result = await db.collection('post').find().toArray()
+  console.log(result)
 
   return (
     <div>안녕</div>
