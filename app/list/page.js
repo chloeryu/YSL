@@ -8,10 +8,20 @@ export default async function List() {
 
   return (
     <div className="list-bg">
-      <div className="list-item">
-        <h4>{result[0].title}</h4>
-        <p>1월 1일</p>
-      </div>
+      {
+        result.map((a, i) =>
+        (
+          <div className="list-item" key={i}>
+            <h4>{result[i].title}</h4>
+            <p>6월 22일</p>
+          </div>
+        )
+        )
+      }
+      {/* <div className="list-item">
+                <h4>{result[i].title}</h4>
+                <p>1월 1일</p>
+             </div>
       <div className="list-item">
         <h4>{result[1].title}</h4>
         <p>1월 1일</p>
@@ -19,7 +29,7 @@ export default async function List() {
       <div className="list-item">
         <h4>{result[2].title}</h4>
         <p>1월 1일</p>
-      </div>
+      </div> */}
     </div>
   )
 }
