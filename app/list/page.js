@@ -1,18 +1,18 @@
 import { connectDB } from "@/util/databade"
+import Link from "next/link";
+import DetailLink from "./DetailLink";
 
 export default async function List() {
-
   const db = (await connectDB).db("forum")
   let result = await db.collection('post').find().toArray()
-  console.log(result[0].title)
-
   return (
     <div className="list-bg">
       {
         result.map((a, i) =>
         (
           <div className="list-item" key={i}>
-            <h4>{result[i].title}</h4>
+            <Link href={'/detail/' + result[i]._id}><h4>{a.title}</h4></Link>
+            <DetailLink />
             <p>6월 22일</p>
           </div>
         )
