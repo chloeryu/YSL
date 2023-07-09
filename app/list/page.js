@@ -1,4 +1,4 @@
-import { connectDB } from "@/util/databade"
+import { connectDB } from "@/util/database"
 import Link from "next/link";
 import DetailLink from "./DetailLink";
 

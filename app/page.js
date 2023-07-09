@@ -1,4 +1,4 @@
-import { connectDB } from "@/util/databade"
+import { connectDB } from "@/util/database"
 import { MongoClient } from "mongodb"
 
 export default async function Home() {
