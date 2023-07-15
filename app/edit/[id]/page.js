@@ -1,16 +1,22 @@
 import { connectDB } from "@/util/database"
+import { ObjectId } from "mongodb"
 
-export default async function Edit() {
+
+export default async function Edit(props) {
 
   const db = (await connectDB).db("forum")
-  let result = await db.collection('post').findOne({ _id: 현재URL에 입력한 id })
+  let result = await db.collection('post').findOne({ _id: new ObjectId(props.params.id) })
+
+  await db.collection('post').updateOne({ 수정할게시물정보 }, { $set: { title: 'lip' } })
+
+  console.log(result)
 
   return (
     <div className="p-20">
       <h4>수정페이지</h4>
       <form action="/api/post/new" method="POST">
-        <input name="title" placeholder="글제목" />
-        <input name="content" placeholder="글내용" />
+        <input name="title" defaultValue={result.title} />
+        <input name="content" defaultValue={result.content} />
         <button type="submit">버튼</button>
       </form>
     </div>
